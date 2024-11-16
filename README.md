@@ -1,10 +1,10 @@
 I have the following architecture on AWS  
-A. Primary Region (where the application is deployed):
-  -- Multi-AZ setup with Auto Scaling.
-  -- Load balancer distributing traffic to instances.
-  -- Database in RDS with Multi-AZ replication.
-B. Secondary Region (for DR):
-  -- Set up to replicate critical resources (dormant until a disaster).
+A. Primary Region (where the application is deployed):  
+  -- Multi-AZ setup with Auto Scaling.  
+  -- Load balancer distributing traffic to instances.  
+  -- Database in RDS with Multi-AZ replication.  
+B. Secondary Region (for DR):  
+  -- Set up to replicate critical resources (dormant until a disaster).  
 
 **Preparing the secondary region for disaster recovery**
 A. Create the Secondary VPC

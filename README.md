@@ -7,11 +7,11 @@ B. Secondary Region (for DR):
   -- Set up to replicate critical resources (dormant until a disaster).  
 
 **Preparing the secondary region for disaster recovery**
-A. Create the Secondary VPC
-  -- Go to VPC Dashboard in the secondary AWS region.
-  -- Create a VPC with the same CIDR range as the primary region.
-  -- Create subnets (Public and Private) in different availability zones.
-  -- Set up a route table with internet gateway for public subnets.
+A. Create the Secondary VPC  
+  -- Go to VPC Dashboard in the secondary AWS region.  
+  -- Create a VPC with the same CIDR range as the primary region.  
+  -- Create subnets (Public and Private) in different availability zones.  
+  -- Set up a route table with internet gateway for public subnets.  
 
 B. Database Setup
   -- Enable read replica in the secondary region for your RDS instance:

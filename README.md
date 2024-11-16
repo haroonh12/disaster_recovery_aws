@@ -15,19 +15,19 @@ A. Create the Secondary VPC
 
 B. Database Setup  
   -- Enable read replica in the secondary region for your RDS instance:  
-        - Go to RDS Dashboard.  
-        - Select your database instance → Actions → Create Read Replica.  
-        - Choose the secondary region.  
-        - Verify replication status and ensure the replica is in sync.  
+          - Go to RDS Dashboard.  
+          - Select your database instance → Actions → Create Read Replica.  
+          - Choose the secondary region.  
+          - Verify replication status and ensure the replica is in sync.  
 
 C. Create EC2 AMIs  
   -- Go to EC2 Dashboard in the primary region.  
   -- Create AMI from your existing EC2 instances:  
-        - Select instance → Actions → Image → Create Image.  
-        - Provide a name and description for the AMI.  
+          - Select instance → Actions → Image → Create Image.  
+          - Provide a name and description for the AMI.  
   -- Copy the AMI to the secondary region:  
-        - Go to AMI Dashboard → Select AMI → Actions → Copy AMI.  
-        - Select the secondary region.  
+          - Go to AMI Dashboard → Select AMI → Actions → Copy AMI.  
+          - Select the secondary region.  
 
 **Set Up Pre-Configured Resources in the Secondary Region**  
 A. Launch EC2 Instances (Dormant State)  
@@ -45,37 +45,37 @@ C. Auto Scaling Setup
 
 D. Sync Static Assets  
   -- Sync application data (static assets, configuration files) to Amazon S3 with Cross-Region Replication:  
-        - Create an S3 bucket in the primary region for static files.  
-        - Enable cross-region replication to an S3 bucket in the secondary region.  
+          - Create an S3 bucket in the primary region for static files.  
+          - Enable cross-region replication to an S3 bucket in the secondary region.  
 
 **Automate DR Process**  
 A. Set Up Route 53 Health Checks  
   -- Go to Route 53 Dashboard.  
   -- Create health checks for the primary region's ELB.  
   -- Configure a failover routing policy:  
-        - Primary: Route traffic to the primary ELB.  
-        - Secondary: Route traffic to the secondary ELB if the primary health check fails.  
+          - Primary: Route traffic to the primary ELB.  
+          - Secondary: Route traffic to the secondary ELB if the primary health check fails.  
 
 B. Automate DR with AWS Elastic Disaster Recovery  
   -- Enable AWS Elastic Disaster Recovery (AWS DRS) for EC2 instances:  
-        - Go to Elastic Disaster Recovery in AWS Management Console.  
-        - Add your EC2 instances for replication.  
-        - Configure replication settings (e.g., instance size, region).  
+          - Go to Elastic Disaster Recovery in AWS Management Console.  
+          - Add your EC2 instances for replication.  
+          - Configure replication settings (e.g., instance size, region).  
   -- Test failover by launching recovery instances in the secondary region.  
 
 C. Automate Database Promotion  
   -- Set up an RDS failover mechanism:  
-        - In the secondary region, promote the read replica to the primary instance during a disaster.  
-        - Use automation tools like AWS Lambda or custom scripts to trigger promotion.  
+          - In the secondary region, promote the read replica to the primary instance during a disaster.  
+          - Use automation tools like AWS Lambda or custom scripts to trigger promotion.  
 
 **Test and Validate**  
 A. Conduct a Failover Drill  
   -- Simulate a disaster by stopping the primary region's instances.  
   -- Verify:  
-        - Traffic is routed to the secondary region.  
-        - EC2 instances scale up as expected.  
-        - RDS read replica is promoted successfully.  
-        - Roll back to the primary region and validate replication.  
+          - Traffic is routed to the secondary region.  
+          - EC2 instances scale up as expected.  
+          - RDS read replica is promoted successfully.  
+          - Roll back to the primary region and validate replication.  
 
 B. Monitor and Optimize  
   -- Use Amazon CloudWatch to monitor health checks and replication metrics.  

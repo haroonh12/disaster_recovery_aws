@@ -1,4 +1,4 @@
-I have the following architecture on AWS
+I have the following architecture on AWS  
 A. Primary Region (where the application is deployed):
   -- Multi-AZ setup with Auto Scaling.
   -- Load balancer distributing traffic to instances.
